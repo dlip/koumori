@@ -4,6 +4,7 @@
 
 ![Lid](./images/lid.jpg)
 
+- Designed to be minimalistic and portable
 - 28 keys
 - Unibody design
 - RP2040-Zero MCU
