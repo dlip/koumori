@@ -5,7 +5,7 @@
 ![Lid](./images/lid.jpg)
 
 - Designed to be minimalistic and portable
-- 28 keys
+- 28 keys (Using Engram with my [layout](https://github.com/dlip/qmk_firmware/blob/dlip/keyboards/dlip/koumori/keymaps/engram/README.md))
 - Unibody design
 - RP2040-Zero MCU
 - Cirque 40mm trackpad with glass overlay
