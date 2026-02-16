@@ -55,6 +55,9 @@
 - Stick glass protector to vinyl sheet
 - Cut out using scissors and a X-Acto knife
 - Stick on Cirque
+
+![Cirque overlay](./images/build-cirque-overlay.jpg)
+
 - Solder Cirque using about 10 cm wire stripped at the ends using the following mapping
   - SCK -> SCK
   - MISO -> SO
