@@ -11,6 +11,6 @@
 - Customizable layout with QMK Firmware
 - Case with handle and magnetic lid
 - PCB and case designed in [Ergogen](https://ergogen.xyz)
-- Simple to build with no microscopic parts and a detailed [build guide](./build.md)
+- Simple [build guide](./build.md) with no microscopic parts
 - Name means the animal "bat" in Japanese
 - Open source and free (GPL-3.0)
