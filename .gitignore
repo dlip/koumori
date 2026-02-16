@@ -1,0 +1,9 @@
+/output
+/kicad/gerber_to_order/*
+!/kicad/gerber_to_order/*.zip
+/kicad/*-backups
+/kicad/production/backups
+/kicad/fp-info-cache
+/kicad/*.lck
+/kicad/_autosave*
+/node_modules

@@ -1,0 +1,481 @@
+units:
+  # Proxy Spacing Variables
+  kx: cx
+  ky: cy
+  # Padding Variables
+  px: kx + 2
+  py: ky + 2
+  # M2 Screw Inserts
+  screwRadius: 1.70
+  standoffRadius: 3
+  # Footprints
+  rp2040zero_x: 18
+  rp2040zero_y: 23.5
+  pointing_x: 13
+  pointing_y: 3
+  # Case
+  standoffHeight: 3.4
+  pcbThickness: 1.6
+  wallThickness: 2
+  wallTollerance: 0.3
+  handleRadius: 100
+  handleThickness: 3
+  magnetHeight: 3.3
+  magnetRadius: 3.2
+  keyHeight: 12
+  hotSwapMaxHeight: 2
+  caseHeight: wallThickness + hotSwapMaxHeight + pcbThickness
+points:
+  zones:
+    matrix:
+      mirror: &mirror
+        ref: matrix_index_top
+        distance: 42.3
+      anchor:
+        shift: [30, -80]
+      key:
+        padding: 1ky
+        spread: 1kx
+      columns:
+        pinky:
+          key:
+            splay: -25
+            column_net: GP10
+            mirror.column_net: GP10
+        ring:
+          key:
+            stagger: 0.6ky
+            splay: -7
+            spread: 1kx + 2
+            column_net: GP11
+            mirror.column_net: GP11
+        middle:
+          key:
+            stagger: 0.33ky
+            splay: -2
+            spread: 1kx + 1
+            column_net: GP12
+            mirror.column_net: GP12
+        index:
+          key:
+            stagger: -0.45ky
+            splay: -2
+            spread: 1kx + 0.2
+            column_net: GP13
+            mirror.column_net: GP13
+      rows:
+        bottom:
+          row_net: GP27
+          mirror.row_net: GP6
+        middle:
+          row_net: GP28
+          mirror.row_net: GP1
+        top:
+          row_net: GP29
+          mirror.row_net: GP0
+    thumbs:
+      mirror: *mirror
+      key:
+        padding: 1ky
+        spread: 1kx
+      anchor:
+        ref: matrix_index_bottom
+        shift: [1.05kx, -.3ky]
+      columns:
+        inner:
+          key:
+            splay: 0
+            column_net: GP13
+            mirror.column_net: GP10
+        outer:
+          key:
+            column_net: GP12
+            mirror.column_net: GP11
+      rows:
+        top:
+          row_net: GP7
+          mirror.row_net: GP7
+    mcu:
+      anchor:
+        aggregate.parts: [matrix_index_top, mirror_matrix_index_top]
+        shift: [0, -16]
+    cirque:
+      anchor:
+        ref: [mcu]
+        shift: [0, -9.4]
+    pointing:
+      anchor:
+        ref: [mcu]
+        shift: [0, -17]
+    handle:
+      anchor:
+        ref: [mcu]
+        shift: [0, -43]
+    handleMask:
+      anchor:
+        ref: [handle]
+        shift: [0, -45]
+    holePinkyop:
+      mirror: *mirror
+      anchor:
+        ref: [matrix_pinky_top]
+        shift: [0.2kx, 0.65kx]
+    holeRingTop:
+      mirror: *mirror
+      anchor:
+        ref: [matrix_ring_top]
+        shift: [0.4kx, 0.63kx]
+    holeRingBottom:
+      mirror: *mirror
+      anchor:
+        ref: [matrix_ring_bottom]
+        shift: [-0.3kx, -1ky]
+    holeOuterThumbs:
+      mirror: *mirror
+      anchor:
+        ref: [matrix_index_bottom]
+        shift: [.25kx, -0.68ky]
+    holeBottom:
+      anchor:
+        ref: [mcu]
+        shift: [0kx, -1.443ky]
+    holeLeft:
+      mirror: *mirror
+      anchor:
+        ref: [mcu]
+        shift: [-.75kx, -.15ky]
+    magnetsBottom:
+      mirror: *mirror
+      anchor:
+        ref: [matrix_ring_bottom]
+        shift: [.09kx, -0.95ky]
+    magnetsTop:
+      mirror: *mirror
+      anchor:
+        ref: [matrix_ring_top]
+        shift: [-.8kx, .13ky]
+    usbCutout:
+      anchor:
+        ref: [mcu]
+        shift: [0, 13]
+    lidMask:
+      anchor:
+        ref: [mcu]
+        shift: [0, 35]
+outlines:
+  keys:
+    - what: rectangle
+      where: /matrix|thumb/
+      size: [kx-0.5, ky-0.5]
+  board:
+    - what: polygon
+      operation: stack
+      fillet: 1
+      points:
+        - ref: matrix_pinky_top
+          shift: [-0.5px, 0.5py]
+        - ref: matrix_ring_top
+          shift: [-0.5px, 0.5py]
+        - ref: matrix_middle_top
+          shift: [-0.5px, 0.5py]
+        - ref: matrix_middle_top
+          shift: [0.5px, 0.5py]
+        - ref: matrix_index_top
+          shift: [0.5px, 0.5py]
+        - ref: mcu
+          shift: [-rp2040zero_x/2, rp2040zero_y/2]
+        - ref: mcu
+          shift: [rp2040zero_x/2, rp2040zero_y/2]
+        - ref: mirror_matrix_index_top
+          shift: [0.5px, 0.5py]
+        - ref: mirror_matrix_middle_top
+          shift: [0.5px, 0.5py]
+        - ref: mirror_matrix_middle_top
+          shift: [-0.5px, 0.5py]
+        - ref: mirror_matrix_ring_top
+          shift: [-0.5px, 0.5py]
+        - ref: mirror_matrix_pinky_top
+          shift: [-0.5px, 0.5py]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [-0.5px, -0.5py]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [0.5px, -0.5py]
+        - ref: mirror_thumbs_inner_top
+          shift: [-0.5px, -0.5py]
+        - ref: mirror_thumbs_outer_top
+          shift: [0.5px, -0.5py]
+        - ref: mirror_thumbs_outer_top
+          shift: [0.5px, 0.5py]
+        - ref: mirror_thumbs_outer_top
+          shift: [0.5px, 0.5py]
+        - ref: thumbs_outer_top
+          shift: [0.5px, 0.5py]
+        - ref: thumbs_outer_top
+          shift: [0.5px, 0.5py]
+        - ref: thumbs_outer_top
+          shift: [0.5px, -0.5py]
+        - ref: thumbs_inner_top
+          shift: [-0.5px, -0.5py]
+        - ref: matrix_pinky_bottom
+          shift: [0.5px, -0.5py]
+        - ref: matrix_pinky_bottom
+          shift: [-0.5px, -0.5py]
+  _innerWall:
+    - what: outline
+      name: board
+      expand: wallTollerance
+  _outerWall:
+    - what: outline
+      name: _innerWall
+      expand: wallThickness
+  _innerLid:
+    - what: outline
+      name: _outerWall
+      expand: wallTollerance
+  _outerLid:
+    - what: outline
+      name: _innerLid
+      expand: wallThickness
+  _mcu:
+    - what: rectangle
+      where: /^mcu/
+      size: [rp2040zero_x, rp2040zero_y]
+  _pointing:
+    - what: rectangle
+      where: /pointing/
+      size: [pointing_x, pointing_y]
+  _cirque:
+    - what: circle
+      where: /cirque/
+      radius: 20
+  _cirque_inner:
+    - what: circle
+      where: /cirque/
+      radius: 18.3
+  _cirque_outer:
+    - what: circle
+      where: /cirque/
+      radius: 21
+  _handle_inner:
+    - what: circle
+      where: handle
+      radius: handleRadius - handleThickness
+      joints: beveled
+  _handle_outer:
+    - what: circle
+      where: handle
+      radius: handleRadius
+      joints: beveled
+  _lidMask:
+    - what: rectangle
+      where: lidMask
+      size: [78, 50]
+  _handle_mask:
+    - what: rectangle
+      where: handleMask
+      size: [handleRadius * 2.1, handleRadius * 2.1]
+  _magnets:
+    - what: circle
+      where: /magnets/
+      radius: magnetRadius
+  _magnetsStandoff:
+    - what: circle
+      where: /magnets/
+      radius: magnetRadius + wallThickness
+  _mounting:
+    - what: circle
+      where: /hole/
+      radius: screwRadius
+  _standoff:
+    - what: circle
+      where: /hole/
+      radius: standoffRadius
+  _usbCutout:
+    - what: rectangle
+      where: usbCutout
+      size: [13, 25]
+  case:
+    - ^_outerWall
+    - ^_innerWall
+    - ^_innerLid
+    - ^_outerLid
+    - ^_cirque_inner
+    - ^_cirque_outer
+    - ^_handle_inner
+    - ^_handle_outer
+    - ^_handle_mask
+    - ^_standoff
+    - ^_magnets
+    - ^_magnetsStandoff
+    - ^_lidMask
+    - ^_usbCutout
+  combo:
+    - ^_cirque
+    - ^board
+    - ^keys
+    - ^_mcu
+    - ^_pointing
+    - ^_mounting
+  all:
+    - ^case
+    - ^combo
+pcbs:
+  koumori:
+    outlines:
+      main:
+        outline: board
+      standoff:
+        outline: _standoff
+        layer: Dwgs.User
+      cirque:
+        outline: _cirque
+        layer: Dwgs.User
+      cirque_inner:
+        outline: _cirque_inner
+        layer: Dwgs.User
+      cirque_outer:
+        outline: _cirque_outer
+        layer: Dwgs.User
+    footprints:
+      chocHotswapLeft:
+        what: choc
+        where: /^(thumb|matrix)/
+        params:
+          keycaps: true
+          hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diodeLeft:
+        what: diode
+        where: /^(thumb|matrix)/
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
+      chocHotswapRight:
+        what: choc
+        where: /^mirror_(thumb|matrix)/
+        params:
+          keycaps: true
+          hotswap: true
+          from: "{{mirror.column_net}}"
+          to: "{{colrow}}"
+      diodeRight:
+        what: diode
+        where: /^mirror_(thumb|matrix)/
+        params:
+          from: "{{colrow}}"
+          to: "{{mirror.row_net}}"
+        adjust:
+          shift: [0, -5]
+      mcu:
+        what: rp2040zero
+        where: mcu
+      pointing:
+        what: pointing
+        where: pointing
+        params:
+          SCK: GP2
+          MISO: GP4
+          SS: GP5
+          MOSI: GP3
+      holes:
+        what: mountinghole
+        where: /hole/
+cases:
+  _outside:
+    - name: _outerWall
+      extrude: caseHeight
+      shift: [0, 0, -caseHeight]
+  _inside:
+    - name: _innerWall
+      extrude: caseHeight
+      shift: [0, 0, -caseHeight + wallThickness]
+  _handle_inner:
+    - name: _handle_inner
+      extrude: caseHeight
+      shift: [0, 0, -caseHeight]
+  _handle_outer:
+    - name: _handle_outer
+      extrude: caseHeight
+      shift: [0, 0, -caseHeight]
+  _handle_mask:
+    - name: _handle_mask
+      extrude: caseHeight
+      shift: [0, 0, -caseHeight]
+  _standoff:
+    - name: _standoff
+      extrude: standoffHeight
+      shift: [0, 0, -pcbThickness - standoffHeight ]
+  _mounting:
+    - name: _mounting
+      extrude: standoffHeight
+      shift: [0, 0, -pcbThickness - standoffHeight]
+    - name: _magnets
+      extrude: magnetHeight
+      shift: [0, 0, -pcbThickness - magnetHeight ]
+  _lidOutside:
+    - name: _outerLid
+      extrude: keyHeight + wallThickness * 2
+      shift: [0, 0, -wallThickness ]
+  _lidInside:
+    - name: _innerLid
+      extrude: keyHeight + wallThickness
+      shift: [0, 0, -wallThickness ]
+  _lidMask:
+    - name: _lidMask
+      extrude: caseHeight + wallTollerance
+      shift: [0, 0, -caseHeight ]
+  _lidMounting:
+    - name: _magnets
+      extrude: magnetHeight
+  _lid_standoff:
+    - name: _magnetsStandoff
+      extrude: keyHeight - magnetHeight + 1
+      shift: [0, 0, magnetHeight - 1]
+  _lid_usbCutout:
+    - name: _usbCutout
+      extrude: keyHeight
+  case:
+    - what: case
+      name: _handle_outer
+      operation: add
+    - what: case
+      name: _handle_inner
+      operation: subtract
+    - what: case
+      name: _handle_mask
+      operation: subtract
+    - what: case
+      name: _outside
+      operation: add
+    - what: case
+      name: _inside
+      operation: subtract
+    - what: case
+      name: _standoff
+      operation: add
+    - what: case
+      name: _mounting
+      operation: subtract
+  lid:
+    - what: case
+      name: _lidOutside
+      operation: add
+    - what: case
+      name: _lidInside
+      operation: subtract
+    - what: case
+      name: _lidMask
+      operation: subtract
+    - what: case
+      name: _lid_usbCutout
+      operation: subtract
+    - what: case
+      name: _lid_standoff
+      operation: add
+    - what: case
+      name: _lidMounting
+      operation: subtract
+
