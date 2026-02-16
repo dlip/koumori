@@ -14,6 +14,7 @@
 | M2 Screw 4mm                                                                                | 8   | <https://www.aliexpress.com/item/4001248931159.html>                                                                 |
 | M2 Screw 6mm                                                                                | 3   | <https://www.aliexpress.com/item/4001248931159.html>                                                                 |
 | M2 knurled insert nuts 3mm length 3.5mm OD                                                  | 11  | <https://www.aliexpress.com/item/1005008897571758.html>                                                              |
+| Neodymium Magnets 6mm x 3mm                                                                 | 8   | <https://www.aliexpress.com/item/1005010074888189.html>                                                              |
 | Wire (30 AWG)                                                                               | 1   | <https://www.aliexpress.com/item/1005007256968315.html>                                                              |
 | Adhesive Vinyl Sheets                                                                       | 1   | <https://www.aliexpress.com/item/1005009732820762.html>                                                              |
 | 40mm Glass Smartwatch Screen Protector (**NOT** Galaxy Watch 40mm which is actually 36.5mm) | 1   | <https://www.aliexpress.com/item/1005007458477781.html>                                                              |
